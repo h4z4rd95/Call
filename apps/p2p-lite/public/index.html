@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>P2P Lite Call</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Self-hosted 1:1 video call</p>
+          <h1>P2P Lite Call</h1>
+          <p class="subtitle">
+            Create a temporary room, share the link, and connect without a database or user accounts.
+          </p>
+        </div>
+        <div class="status-card">
+          <p class="status-label">Connection status</p>
+          <p id="connectionStatus" class="status-value">Not connected</p>
+          <p id="roomStatus" class="status-hint">Create a room or join an existing one.</p>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Create a room</h2>
+          <label class="checkbox-row">
+            <input id="requirePassword" type="checkbox" checked />
+            Protect room with a temporary password
+          </label>
+          <button id="createRoomButton" class="primary-button" type="button">
+            Create room
+          </button>
+          <div id="createdRoomPanel" class="result hidden">
+            <p><strong>Share link:</strong> <span id="shareLink"></span></p>
+            <p><strong>Room ID:</strong> <span id="roomIdValue"></span></p>
+            <p><strong>Password:</strong> <span id="roomPasswordValue"></span></p>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2>Join a room</h2>
+          <label class="field">
+            <span>Room ID</span>
+            <input id="roomIdInput" type="text" placeholder="Enter room id" autocomplete="off" />
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input id="roomPasswordInput" type="text" placeholder="Enter password if required" autocomplete="off" />
+          </label>
+          <div class="button-row">
+            <button id="loadRoomButton" type="button">Load room</button>
+            <button id="joinRoomButton" class="primary-button" type="button">Join call</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="roomPanel" class="panel hidden">
+        <div class="room-header">
+          <div>
+            <h2>Room</h2>
+            <p id="roomMeta">No room loaded.</p>
+          </div>
+          <div class="button-row">
+            <button id="copyLinkButton" type="button">Copy link</button>
+            <button id="leaveButton" class="danger-button" type="button">Leave</button>
+          </div>
+        </div>
+
+        <div class="video-grid">
+          <div class="video-card">
+            <p>Your camera</p>
+            <video id="localVideo" autoplay playsinline muted></video>
+          </div>
+          <div class="video-card">
+            <p>Remote camera</p>
+            <video id="remoteVideo" autoplay playsinline></video>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button id="toggleAudioButton" type="button">Mute microphone</button>
+          <button id="toggleVideoButton" type="button">Turn camera off</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Event log</h2>
+        <pre id="eventLog" class="log"></pre>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

@@ -85,6 +85,12 @@ importers:
         specifier: 5.7.3
         version: 5.7.3
 
+  apps/p2p-lite:
+    dependencies:
+      ws:
+        specifier: ^8.18.3
+        version: 8.18.3
+
   apps/server:
     dependencies:
       '@call/auth':
